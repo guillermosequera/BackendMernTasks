@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const proyectoController = require('../controllers/proyectocontroller');
+const proyectoController = require('../controllers/proyectoController');
 
 //crea proyectos
-// api/projects
+//api/projects
 router.post('/', 
-    proyectoController.crearProyeecto
+    proyectoController.crearProyecto
 )
 
 module.exports = router;
