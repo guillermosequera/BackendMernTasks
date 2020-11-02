@@ -26,6 +26,24 @@ exports.autentuicarUsuario = async (req, res) => {
             return res.status(400).json({msg: 'Password Incorrecto'});
         }
 
+        //si todo es correcto crear y firmar el JWT
+        const payload = {
+            usuario: {
+                id: usuario.id
+            }
+        };
+
+        //firmar el JWT
+        jwt.sign(payload, process.env.SECRETA, {
+            expiresIn: 3600 // 1 hora
+        }, (error, token) => {
+            if(error) throw error;
+
+             //Mensaje de confirmacion
+            res.json({ token });
+
+        });
+
     } catch (error) {
         console.log(error);
     }
